@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,6 +12,7 @@ class AcountController extends Controller
 {
   //This is method will show user registration page
   public function registration()
+
   {
     return view('front.acount.registration');
   }
@@ -46,5 +48,31 @@ class AcountController extends Controller
   public function login()
   {
     return view('front.acount.login');
+  }
+  public function authenticate(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'email' => 'required|email',
+      'password' => 'required'
+    ]);
+    if ($validator->passes()) {
+      if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        return redirect()->route('acount.profile');
+      } else {
+        return redirect()->route('acount.login')->with('error', 'Either Email/Password is incorrect');
+      }
+    } else {
+      return redirect()->route('acount.login')->withErrors($validator)->withInput($request->only('email'));
+    }
+  }
+  public function profile()
+  {
+
+    return view('front.acount.profile');
+  }
+  public function logout()
+  {
+    Auth::guard('admin')->logout();
+    return redirect()->route('acount.login');
   }
 }
