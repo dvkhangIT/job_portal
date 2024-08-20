@@ -9,6 +9,7 @@
     content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="pinterest" content="nopin" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css"
     integrity="sha512-Fm8kRNVGCBZn0sPmwJbVXlqfJmPC13zRsMElZenX6v721g/H7OukJd8XzDEBRQ2FSATK8xNF9UYvzsCtUpfeJg=="
@@ -22,7 +23,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow">
       <div class="container">
-        <a class="navbar-brand" href="index.html">CareerVibe</a>
+        <a class="navbar-brand" href="{{ route("home") }}">CareerVibe</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,13 +31,13 @@
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-sm-0 mb-lg-0 ms-lg-4 mb-2 me-auto ms-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" aria-current="page" href="{{ route("home") }}">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="jobs.html">Find Jobs</a>
             </li>
           </ul>
-          <a class="btn btn-outline-primary me-2" href="login.html" type="submit">Login</a>
+          <a class="btn btn-outline-primary me-2" href="{{ route("account.login") }}" type="submit">Login</a>
           <a class="btn btn-primary" href="post-job.html" type="submit">Post a Job</a>
         </div>
       </div>
@@ -79,6 +80,14 @@
   <script src="{{ asset("assets/js/slick.min.js") }}"></script>
   <script src="{{ asset("assets/js/lightbox.min.js") }}"></script>
   <script src="{{ asset("assets/js/custom.js") }}"></script>
+  <script>
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+  </script>
+  @yield("customJs")
 </body>
 
 </html>
