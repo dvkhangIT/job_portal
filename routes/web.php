@@ -16,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/account/register', [AccountController::class, 'registration'])->name('account.register');
-Route::get('/account/login', [AccountController::class, 'login'])->name('account.login');
-Route::post('/account/process-register', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
+
+
+Route::group(['prefix' => 'account'], function () {
+  // Guest route
+  Route::group(['middleware' => 'guest'], function () {
+    Route::get('register', [AccountController::class, 'registration'])->name('account.register');
+    Route::get('login', [AccountController::class, 'login'])->name('account.login');
+    Route::post('process-register', [AccountController::class, 'processRegistration'])->name('account.processRegistration');
+    Route::post('/account/authenticate', [AccountController::class, 'authenticate'])->name('account.authenticate');
+  });
+  // Authenticate route
+  Route::group(['middleware' => 'auth'], function () {
+    Route::get('profile', [AccountController::class, 'profile'])->name('account.profile');
+    Route::get('logout', [AccountController::class, 'logout'])->name('account.logout');
+  });
+});
