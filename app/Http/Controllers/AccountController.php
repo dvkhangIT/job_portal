@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AccountController extends Controller
 {
@@ -86,6 +89,39 @@ class AccountController extends Controller
       $user->designation = $request->designation;
       $user->save();
       session()->flash('success', 'Profile updated successfully.');
+      return response()->json([
+        'status' => true,
+        'errors' => [],
+      ]);
+    } else {
+      return response()->json([
+        'status' => false,
+        'errors' => $validator->errors(),
+      ]);
+    }
+  }
+  public function updateProfilePic(Request $request)
+  {
+    $validator = Validator::make($request->all(), [
+      'image' => 'required|image'
+    ]);
+    if ($validator->passes()) {
+      $id = Auth::user()->id;
+      $image = $request->image;
+      $ext = $image->getClientOriginalExtension();
+      $imageName = $id . '-' . time() . '.' . $ext;
+      $image->move(public_path('/profile_pic/'), $imageName);
+      // Create a small thumbnal
+      $sourcePath = public_path('/profile_pic/' . $imageName);
+      $manager = new ImageManager(new Driver());
+      $image = $manager->read($sourcePath);
+      $image->cover(150, 150);
+      $image->toPng()->save(public_path('/profile_pic/thumb/' . $imageName));
+      // Delete old profile pic
+      File::delete(public_path('/profile_pic/thumb/' . Auth::user()->image));
+      File::delete(public_path('/profile_pic/' . Auth::user()->image));
+      User::where('id', $id)->update(['image' => $imageName]);
+      session()->flash('success', 'Profile picture updated successfully.');
       return response()->json([
         'status' => true,
         'errors' => [],
