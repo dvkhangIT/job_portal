@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Category;
+use App\Models\Job;
 use App\Models\JobType;
 use Illuminate\Database\Seeder;
 
@@ -21,7 +22,8 @@ class DatabaseSeeder extends Seeder
     //     'name' => 'Test User',
     //     'email' => 'test@example.com',
     // ]);
-    Category::factory(5)->create();
-    JobType::factory(5)->create();
+    // Category::factory(5)->create();
+    // JobType::factory(5)->create();
+    Job::factory(20)->create();
   }
 }
