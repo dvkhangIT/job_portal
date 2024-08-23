@@ -1,5 +1,4 @@
 @extends("front.layout.app")
-
 @section("main")
 @section("title", "My Job")
 <section class="section-5 bg-2">
