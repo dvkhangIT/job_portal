@@ -70,7 +70,8 @@
                               <li><a class="dropdown-item" href="{{ route("account.editJob", $job->id) }}"><i
                                     class="fa fa-edit" aria-hidden="true"></i>
                                   Edit</a></li>
-                              <li><a class="dropdown-item" href="#"><i class="fa fa-trash" aria-hidden="true"></i>
+                              <li><a class="dropdown-item" href="#" onclick="deleteJob({{ $job->id }})"><i
+                                    class="fa fa-trash" aria-hidden="true"></i>
                                   Delete</a></li>
                             </ul>
                           </div>
@@ -91,6 +92,22 @@
   </div>
 </section>
 @endsection
-
 @section("customJs")
+<script type="text/javascript">
+  function deleteJob(jobId) {
+    if (confirm('Are your sure you want to delete?')) {
+      $.ajax({
+        type: "post",
+        url: "{{ route("account.deleteJob", $job->id) }}",
+        data: {
+          jobId: jobId
+        },
+        dataType: "json",
+        success: function(response) {
+          window.location.href = "{{ route("account.myJobs") }}"
+        }
+      });
+    }
+  }
+</script>
 @endsection
