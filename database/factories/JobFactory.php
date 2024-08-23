@@ -22,6 +22,7 @@ class JobFactory extends Factory
       'company_location' => fake()->city,
       // 'user_id' => rand(1, 3),
       'user_id' => 1,
+      'salary' =>  '$' . rand(1000, 10000),
       'job_type_id' => rand(1, 5),
       'category_id' => rand(1, 5),
       'isFeatured' => rand(0, 1),
