@@ -106,13 +106,9 @@
                               <span class="ps-1">{{ $job->salary }}</span>
                             </p>
                           @endif
-                          <p class="mb-0">
-                            <span class="ps-1">Keywords: {{ $job->keywords }}</span>
-                            <span class="ps-1">Location: {{ $job->location }}</span>
-                          </p>
                         </div>
                         <div class="d-grid mt-3">
-                          <a href="job-detail.html" class="btn btn-primary btn-lg">Details</a>
+                          <a href="{{ route("jobDetail", $job->id) }}" class="btn btn-primary btn-lg">Details</a>
                         </div>
                       </div>
                     </div>

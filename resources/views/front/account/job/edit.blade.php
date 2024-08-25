@@ -85,8 +85,7 @@
                 </div>
                 <div class="mb-4">
                   <label for="" class="mb-2">Benefits</label>
-                  <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits">
-                    {{ $job->benefits }}
+                  <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits">{{ $job->benefits }}
                   </textarea>
                 </div>
                 <div class="mb-4">
