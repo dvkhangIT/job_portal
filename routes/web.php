@@ -20,6 +20,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 Route::get('/jobs/detail/{id}', [JobController::class, 'detail'])->name('jobDetail');
 Route::post('/apply-job', [JobController::class, 'applyJob'])->name('applyJob');
+Route::post('/save-job', [JobController::class, 'saveJob'])->name('saveJob');
 
 
 Route::group(['prefix' => 'account'], function () {
