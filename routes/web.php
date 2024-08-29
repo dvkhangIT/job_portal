@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
@@ -49,4 +50,8 @@ Route::group(['prefix' => 'account'], function () {
     Route::post('/remove-saved-job', [AccountController::class, 'removeSavedJob'])->name('account.removeSavedJob');
     Route::post('/update-password', [AccountController::class, 'updatePassword'])->name('account.updatePassword');
   });
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
+  Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
