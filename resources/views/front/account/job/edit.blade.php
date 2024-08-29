@@ -80,22 +80,23 @@
 
                 <div class="mb-4">
                   <label for="" class="mb-2">Description<span class="req">*</span></label>
-                  <textarea class="form-control" name="description" id="description" cols="5" rows="5"
+                  <textarea class="form-control textarea" name="description" id="description" cols="5" rows="5"
                     placeholder="Description">{{ $job->description }}</textarea>
                 </div>
                 <div class="mb-4">
                   <label for="" class="mb-2">Benefits</label>
-                  <textarea class="form-control" name="benefits" id="benefits" cols="5" rows="5" placeholder="Benefits">{{ $job->benefits }}
+                  <textarea class="form-control textarea" name="benefits" id="benefits" cols="5" rows="5"
+                    placeholder="Benefits">{{ $job->benefits }}
                   </textarea>
                 </div>
                 <div class="mb-4">
                   <label for="" class="mb-2">Responsibility</label>
-                  <textarea class="form-control" name="responsibility" id="responsibility" cols="5" rows="5"
+                  <textarea class="form-control textarea" name="responsibility" id="responsibility" cols="5" rows="5"
                     placeholder="Responsibility">{{ $job->responsibility }}</textarea>
                 </div>
                 <div class="mb-4">
                   <label for="" class="mb-2">Qualifications</label>
-                  <textarea class="form-control" name="qualifications" id="qualifications" cols="5" rows="5"
+                  <textarea class="form-control textarea" name="qualifications" id="qualifications" cols="5" rows="5"
                     placeholder="Qualifications">{{ $job->qualifications }}</textarea>
                 </div>
                 <div class="mb-4">
@@ -120,9 +121,7 @@
                   <input type="text" placeholder="keywords" id="keywords" name="keywords" class="form-control"
                     value="{{ $job->keywords }}">
                 </div>
-
                 <h3 class="fs-4 border-top mb-1 mt-5 pt-5">Company Details</h3>
-
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <label for="" class="mb-2">Name<span class="req">*</span></label>

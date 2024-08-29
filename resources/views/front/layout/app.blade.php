@@ -17,6 +17,10 @@
   <link rel="stylesheet" type="text/css" href="{{ asset("assets/css/style.css") }}" />
   <!-- Fav Icon -->
   <link rel="shortcut icon" type="image/x-icon" href="#" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/plugins/colors/ui/trumbowyg.colors.min.css"
+    integrity="sha512-vw0LMar38zTSJghtmUo0uw000TBbzhsxLZkOgXZG+U4GYEQn+c+FmVf7glhSZUQydrim3pI+/m7sTxAsKhObFA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body data-instant-intensity="mousedown">
@@ -84,7 +88,11 @@
   <script src="{{ asset("assets/js/slick.min.js") }}"></script>
   <script src="{{ asset("assets/js/lightbox.min.js") }}"></script>
   <script src="{{ asset("assets/js/custom.js") }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js"
+    integrity="sha512-YJgZG+6o3xSc0k5wv774GS+W1gx0vuSI/kr0E0UylL/Qg/noNspPtYwHPN9q6n59CTR/uhgXfjDXLTRI+uIryg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
+    $('.textarea').trumbowyg();
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

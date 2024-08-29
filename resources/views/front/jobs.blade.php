@@ -90,7 +90,7 @@
                     <div class="card mb-4 border-0 p-3 shadow">
                       <div class="card-body">
                         <h3 class="fs-5 mb-0 border-0 pb-2">{{ $job->title }}</h3>
-                        <p>{{ Str::words($job->description, 10, "...") }}</p>
+                        <p>{{ Str::words(strip_tags($job->description), 10, "...") }}</p>
                         <div class="bg-light border p-3">
                           <p class="mb-0">
                             <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
