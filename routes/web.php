@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\JobApplicationController;
 use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,4 +60,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
   Route::get('users', [UserController::class, 'index'])->name('admin.users');
   Route::get('users/{id}', [UserController::class, 'edit'])->name('admin.users.edit');
   Route::post('users/{id}', [UserController::class, 'update'])->name('admin.users.update');
+  Route::get('/job-application', [JobApplicationController::class, 'index'])->name('admin.jobApplications');
+  Route::delete('users', [UserController::class, 'destroy'])->name('admin.users.destroy');
 });
