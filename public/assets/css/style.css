@@ -10822,3 +10822,6 @@ footer .nav-link {
     justify-content: center;
     align-items: center;
 }
+.pagination span {
+    font-size: inherit;
+}
