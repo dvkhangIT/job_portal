@@ -18,6 +18,7 @@
           @include("front.account.sidebar")
         </div>
         <div class="col-lg-9">
+          @include("front.message")
           <form action="" id="editJobForm" name="editJobForm">
             <div class="card mb-4 border-0 shadow">
               <div class="card-body card-form p-4">

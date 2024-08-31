@@ -64,4 +64,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
   Route::get('/job-application', [JobApplicationController::class, 'index'])->name('admin.jobApplications');
   Route::delete('users', [UserController::class, 'destroy'])->name('admin.users.destroy');
   Route::get('/jobs', [AdminJobController::class, 'index'])->name('admin.jobs');
+  Route::get('/jobs/edit/{id}', [AdminJobController::class, 'edit'])->name('admin.jobs.edit');
+  Route::put('/jobs/{id}', [AdminJobController::class, 'update'])->name('admin.jobs.update');
 });
