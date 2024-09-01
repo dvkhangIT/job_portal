@@ -66,4 +66,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
   Route::get('/jobs', [AdminJobController::class, 'index'])->name('admin.jobs');
   Route::get('/jobs/edit/{id}', [AdminJobController::class, 'edit'])->name('admin.jobs.edit');
   Route::put('/jobs/{id}', [AdminJobController::class, 'update'])->name('admin.jobs.update');
+  Route::delete('/jobs', [AdminJobController::class, 'destroy'])->name('admin.jobs.destroy');
 });
