@@ -80,7 +80,31 @@
                   <p></p>
                 </div>
               </div>
-
+              <div class="row">
+                <div class="form-check col-md-6 mb-4">
+                  <input class="form-check-input" type="checkbox" value="1" id="isFeatured" name="isFeatured"
+                    {{ $job->isFeatured == 1 ? "checked" : "" }}>
+                  <label class="form-check-label" for="isFeatured">
+                    Featured
+                  </label>
+                </div>
+                <div class="form-check col-md-6 mb-4">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" value="1" id="status-active" name="status"
+                      {{ $job->status == 1 ? "checked" : "" }}>
+                    <label class="form-check-label" for="status-active">
+                      Active
+                    </label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" value="0" id="status-block" name="status"
+                      {{ $job->status == 0 ? "checked" : "" }}>
+                    <label class="form-check-label" for="status-block">
+                      Block
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="mb-4">
                 <label for="" class="mb-2">Description<span class="req">*</span></label>
                 <textarea class="form-control textarea" name="description" id="description" cols="5" rows="5"
