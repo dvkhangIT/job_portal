@@ -13,6 +13,8 @@ class JobApplicationController extends Controller
     $jobApplications = JobApplication::orderBy('created_at', 'DESC')
       ->with('job', 'user', 'employer')
       ->paginate(10);
-    dd($jobApplications);
+    return view('admin.job-applications.list', [
+      'applications' => $jobApplications,
+    ]);
   }
 }
