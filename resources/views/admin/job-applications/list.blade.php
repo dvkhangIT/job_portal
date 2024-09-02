@@ -53,7 +53,6 @@
                           {{ $application->employer->name }}
                         </td>
                         <td>{{ \Carbon\Carbon::parse($application->applied_date)->format("d M, Y") }}</td>
-                        <td>{{ $application->user->name }}</td>
                         <td>
                           <div class="action-dots">
                             <button class="border-0" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,20 +84,20 @@
 
 @section("customJs")
 <script>
-  // function deleteJob(id) {
-  //   if (confirm('Are you sure you want to delete?')) {
-  //     $.ajax({
-  //       type: "delete",
-  //       url: "{{ route("admin.jobs.destroy") }}",
-  //       data: {
-  //         id: id
-  //       },
-  //       dataType: "json",
-  //       success: function(response) {
-  //         window.location.href = "{{ route("admin.jobs") }}"
-  //       }
-  //     });
-  //   }
-  // }
+  function deleteJobApplication(id) {
+    if (confirm('Are you sure you want to delete?')) {
+      $.ajax({
+        type: "delete",
+        url: "{{ route("admin.jobApplications.destroy") }}",
+        data: {
+          id: id
+        },
+        dataType: "json",
+        success: function(response) {
+          window.location.href = "{{ route("admin.jobApplications") }}"
+        }
+      });
+    }
+  }
 </script>
 @endsection
